@@ -1,0 +1,31 @@
+{
+    "name": "nessla/omnipay-swish",
+    "type": "library",
+    "description": "Swish gateway for Omnipay payment processing library",
+    "keywords": [
+        "gateway",
+        "merchant",
+        "omnipay",
+        "pay",
+        "payment",
+        "swish",
+        "purchase"
+    ],
+    "homepage": "https://github.com/nessla/omnipay-swish",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Linus Larsson",
+            "email": "linus@nessla.se"
+        }
+    ],
+    "autoload": {
+        "psr-4": { "Omnipay\\Swish\\" : "src/" }
+    },
+    "require": {
+        "omnipay/common": "~2.0"
+    },
+    "require-dev": {
+        "omnipay/tests": "~2.0"
+    }
+}
