@@ -3,8 +3,8 @@
 **Swish driver for the Omnipay PHP payment processing library**
 
 [![Build Status](https://travis-ci.org/nessla/omnipay-swish.svg?branch=master)](https://travis-ci.org/nessla/omnipay-swish)
-[![Latest Stable Version](https://poser.pugx.org/nessla/omnipay-swish/version.svg)](https://packagist.org/packages/nessla/omnipay-swish)
-[![Total Downloads](https://poser.pugx.org/nessla/omnipay-swish/d/total.png)](https://packagist.org/packages/nessla/omnipay-swish)
+[![Latest Stable Version](https://poser.pugx.org/nessla/omnipay-swish/v/stable)](https://packagist.org/packages/nessla/omnipay-swish)
+[![Total Downloads](https://poser.pugx.org/nessla/omnipay-swish/downloads)](https://packagist.org/packages/nessla/omnipay-swish)
 
 [Omnipay](https://github.com/thephpleague/omnipay) is a framework agnostic, multi-gateway payment
 processing library for PHP 5.3+. This package implements Swish support for Omnipay.
@@ -17,7 +17,7 @@ to your `composer.json` file:
 ```json
 {
     "require": {
-        "nessla/omnipay-swish": "~1.0"
+        "nessla/omnipay-swish": "dev-master"
     }
 }
 ```
