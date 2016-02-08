@@ -17,10 +17,10 @@ use Omnipay\Common\AbstractGateway;
  * Download the certificate from https://www.getswish.se/handel/ under the section "Testa din uppkoppling"
  * In the zip you will find the .p12 that needs to be converted with openssl (or similar);
  *
- * $ openssl pkcs12 -in Swish\ Merchant\ Test\ Certificate\ 1231181189.p12 -nocerts -out private_key.pem
+ * $ openssl pkcs12 -in Swish\ Merchant\ Test\ Certificate\ 1231181189.p12 -nocerts -out certificate.key
  * $ openssl pkcs12 -in Swish\ Merchant\ Test\ Certificate\ 1231181189.p12 -nokeys -out certificate.pem
  *
- * You can find more info about converting PKCS#12 files with openssl at https://www.openssl.org/docs/manmaster/apps/pkcs12.html
+ * More info about converting PKCS#12 files with openssl at https://www.openssl.org/docs/manmaster/apps/pkcs12.html
  *
  * ### Example
  *
@@ -34,7 +34,7 @@ use Omnipay\Common\AbstractGateway;
  *   // Initialize the gateway
  *   $gateway->initialize(array(
  *               'cert' => 'certificate.pem',
- *               'privateKey' => 'private_key.pem', // Or array('private_key.pem', 'password') if it's password protected
+ *               'privateKey' => 'certificate.key', // Or array('certificate.key', 'password')
  *               'caCert' => 'root_cert_from_swish.pem',
  *               'testMode' => true
  *   ));
