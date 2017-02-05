@@ -12,15 +12,16 @@ class PurchaseRequestTest extends TestCase
         $this->request->initialize(
             array(
                 'payeePaymentReference' => '0123456789',
-                'notifyUrl' => 'https://example.com/api/swishcb/paymentrequests',
-                'payerAlias' => '46701234567',
-                'payeeAlias' => '1234760039',
-                'amount' => '100.00',
-                'currency' => 'SEK',
-                'message' => 'Kingston USB Flash Drive 8 GB',
+                'notifyUrl'             => 'https://example.com/api/swishcb/paymentrequests',
+                'payerAlias'            => '46701234567',
+                'payeeAlias'            => '1234760039',
+                'amount'                => '100.00',
+                'currency'              => 'SEK',
+                'message'               => 'Kingston USB Flash Drive 8 GB',
             )
         );
     }
+
     public function testGetData()
     {
         $data = $this->request->getData();
@@ -30,6 +31,7 @@ class PurchaseRequestTest extends TestCase
         $this->assertSame('100.00', $data['amount']);
         $this->assertSame('SEK', $data['currency']);
     }
+
     public function testSend()
     {
         $this->setMockHttpResponse('PurchaseSuccess.txt');

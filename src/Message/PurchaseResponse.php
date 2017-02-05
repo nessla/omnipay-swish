@@ -19,7 +19,7 @@ class PurchaseResponse extends AbstractResponse
 
     public function isSuccessful()
     {
-        return ($this->getCode() == 200 || $this->getCode() == 201);
+        return $this->getCode() == 200 || $this->getCode() == 201;
     }
 
     public function getTransactionReference()
@@ -27,10 +27,9 @@ class PurchaseResponse extends AbstractResponse
         $location = $this->response->getHeader('location');
         if (!empty($location)) {
             $urlParts = explode('/', $location);
+
             return end($urlParts);
         }
-
-        return null;
     }
 
     public function getMessage()
@@ -38,8 +37,6 @@ class PurchaseResponse extends AbstractResponse
         if (isset($this->data[0]['errorMessage'])) {
             return $this->data[0]['errorMessage'];
         }
-
-        return null;
     }
 
     public function getCode()

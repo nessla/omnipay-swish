@@ -4,7 +4,6 @@ namespace Omnipay\Swish\Message;
 
 class PurchaseRequest extends AbstractRequest
 {
-
     public function getData()
     {
         $data = parent::getData();
@@ -16,6 +15,6 @@ class PurchaseRequest extends AbstractRequest
 
     protected function getEndpoint()
     {
-        return parent::getEndpoint() . '/paymentrequests';
+        return parent::getEndpoint().'/paymentrequests';
     }
 }
