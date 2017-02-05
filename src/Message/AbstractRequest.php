@@ -157,7 +157,8 @@ abstract class AbstractRequest extends \Omnipay\Common\Message\AbstractRequest
 
     protected function createResponse($response)
     {
-        $data = $response->json();
+        $data = $response->getBody(true);
+        $data = json_decode($data, true);
         $statusCode = $response->getStatusCode();
 
         return $this->response = new PurchaseResponse($this, $response, $data, $statusCode);
