@@ -6,12 +6,10 @@ use Omnipay\Common\Exception\InvalidResponseException;
 
 abstract class AbstractRequest extends \Omnipay\Common\Message\AbstractRequest
 {
-
     const API_VERSION = 'v1';
 
     protected $liveEndpoint = 'https://swicpc.bankgirot.se/swish-cpcapi/api';
     protected $testEndpoint = 'https://mss.swicpc.bankgirot.se/swish-cpcapi/api';
-
 
     public function getCert()
     {
@@ -81,7 +79,8 @@ abstract class AbstractRequest extends \Omnipay\Common\Message\AbstractRequest
     protected function getEndpoint()
     {
         $url = $this->getTestMode() ? $this->testEndpoint : $this->liveEndpoint;
-        return $url . '/' . self::API_VERSION;
+
+        return $url.'/'.self::API_VERSION;
     }
 
     public function getData()
@@ -90,10 +89,10 @@ abstract class AbstractRequest extends \Omnipay\Common\Message\AbstractRequest
 
         $data = array(
             'callbackUrl' => $this->getNotifyUrl(),
-            'amount' => $this->getAmount(),
-            'currency' => $this->getCurrency(),
-            'payerAlias' => $this->getPayerAlias(),
-            'payeeAlias' => $this->getPayeeAlias()
+            'amount'      => $this->getAmount(),
+            'currency'    => $this->getCurrency(),
+            'payerAlias'  => $this->getPayerAlias(),
+            'payeeAlias'  => $this->getPayeeAlias(),
         );
 
         return $data;
@@ -116,15 +115,15 @@ abstract class AbstractRequest extends \Omnipay\Common\Message\AbstractRequest
         if ($this->getHttpMethod() == 'GET') {
             $httpRequest = $this->httpClient->createRequest(
                 $this->getHttpMethod(),
-                $this->getEndpoint() . '?' . http_build_query($data),
+                $this->getEndpoint().'?'.http_build_query($data),
                 array(
-                    'Content-type' => 'application/json'
+                    'Content-type' => 'application/json',
                 ),
                 null,
                 array(
-                    'cert' => $this->getCert(),
+                    'cert'    => $this->getCert(),
                     'ssl_key' => $this->getPrivateKey(),
-                    'verify' => $this->getCaCert()
+                    'verify'  => $this->getCaCert(),
                 )
             );
         } else {
@@ -136,24 +135,24 @@ abstract class AbstractRequest extends \Omnipay\Common\Message\AbstractRequest
                 ),
                 json_encode($data),
                 array(
-                    'cert' => $this->getCert(),
+                    'cert'    => $this->getCert(),
                     'ssl_key' => $this->getPrivateKey(),
-                    'verify' => $this->getCaCert()
+                    'verify'  => $this->getCaCert(),
                 )
             );
         }
 
         try {
             $httpResponse = $httpRequest->send();
+
             return $this->response = $this->createResponse($httpResponse);
         } catch (\Exception $e) {
             throw new InvalidResponseException(
-                'Error communicating with payment gateway: ' . $e->getMessage(),
+                'Error communicating with payment gateway: '.$e->getMessage(),
                 $e->getCode()
             );
         }
     }
-
 
     protected function createResponse($response)
     {

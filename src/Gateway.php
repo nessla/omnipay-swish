@@ -5,7 +5,7 @@ namespace Omnipay\Swish;
 use Omnipay\Common\AbstractGateway;
 
 /**
- * Swish Class
+ * Swish Class.
  *
  *
  * The Swish API uses a REST-like structure. Certificates are used
@@ -63,10 +63,8 @@ use Omnipay\Common\AbstractGateway;
  * @link https://www.openssl.org/docs/manmaster/apps/pkcs12.html
  * @see Omnipay\Swish\Message\AbstractRequest
  */
-
 class Gateway extends AbstractGateway
 {
-
     public function getName()
     {
         return 'Swish';
@@ -75,10 +73,10 @@ class Gateway extends AbstractGateway
     public function getDefaultParameters()
     {
         return array(
-            'cert' => null,
+            'cert'       => null,
             'privateKey' => null,
-            'caCert' => null,
-            'testMode' => false
+            'caCert'     => null,
+            'testMode'   => false,
         );
     }
 
