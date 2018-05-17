@@ -8,8 +8,8 @@ abstract class AbstractRequest extends \Omnipay\Common\Message\AbstractRequest
 {
     const API_VERSION = 'v1';
 
-    protected $liveEndpoint = 'https://swicpc.bankgirot.se/swish-cpcapi/api';
-    protected $testEndpoint = 'https://mss.swicpc.bankgirot.se/swish-cpcapi/api';
+    protected $liveEndpoint = 'https://cpc.getswish.net/swish-cpcapi/api';
+    protected $testEndpoint = 'https://mss.cpc.getswish.net/swish-cpcapi/api';
 
     public function getCert()
     {
